@@ -1,0 +1,598 @@
+/* Base Container */
+.home-wrapper {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222222;
+  background-color: #fcfbf9;
+}
+
+/* Common Typography & Reusables */
+.section-container {
+  max-width: 1140px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.section-subtitle {
+  color: #ffb703;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #444444;
+  margin-bottom: 8px;
+}
+
+.check-icon {
+  color: #0b6651;
+  stroke-width: 3;
+}
+
+/* Buttons */
+.btn-primary-amber, .btn-amber {
+  background-color: #ffb703;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-secondary-green {
+  background-color: #0b6651;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-dark-green {
+  background-color: #0b6651;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  font-weight: 700;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+/* 2. HERO SECTION */
+.hero-section {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero-content p {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* 3. QUOTE STRIP */
+.quote-strip {
+  background-color: #ffb703;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1140px;
+  margin: 0 auto 40px auto;
+}
+
+.play-icon-box {
+  background-color: #111111;
+  padding: 8px;
+  border-radius: 2px;
+  display: flex;
+}
+
+.quote-strip-text {
+  font-weight: 700;
+  font-size: 15px;
+  color: #111111;
+  margin: 0;
+}
+
+.vertical-tag {
+  background-color: #0b6651;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 4px 8px;
+  font-weight: 600;
+}
+
+/* 4. ABOUT SECTION */
+.about-section {
+  max-width: 1140px;
+  margin: 0 auto 50px auto;
+  padding: 0 20px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 0.8fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.about-text h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 8px 0 12px 0;
+}
+
+.about-text .description {
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 20px;
+}
+
+.mission-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.about-amber-card {
+  background-color: #ffb703;
+  padding: 24px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-amber-card p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111111;
+  line-height: 1.5;
+}
+
+/* 5. STATS SECTION */
+.stats-section {
+  max-width: 1140px;
+  margin: 0 auto 50px auto;
+  padding: 0 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.stats-boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-box {
+  padding: 24px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.box-amber {
+  background-color: #ffb703;
+  color: #111111;
+}
+
+.box-green {
+  background-color: #0b6651;
+  color: #ffffff;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 8px;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stats-info h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 8px 0 12px 0;
+}
+
+.stats-info p {
+  font-size: 13px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.stats-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* 6. TEAM SECTION */
+.team-section {
+  max-width: 1140px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.section-header-centered {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.team-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.team-info {
+  padding: 16px;
+}
+
+.team-info h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.team-info p {
+  font-size: 12px;
+  color: #777777;
+}
+
+/* 7. CAUSES & 9. PROJECTS GRIDS */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.cause-card, .project-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.card-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cause-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #0b6651;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+.card-body {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.card-body h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.card-body p {
+  font-size: 13px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.card-footer {
+  padding: 0 20px 20px 20px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.project-sidebar {
+  background-color: #0b6651;
+  color: #ffffff;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 90px;
+  text-align: center;
+}
+
+.raised-tag, .goal-tag {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.percent-box {
+  background-color: #ffb703;
+  color: #111111;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* 8. TESTIMONIALS SECTION */
+.testimonial-section {
+  background-color: #0b6651;
+  color: #ffffff;
+  padding: 50px 20px;
+  margin-bottom: 60px;
+}
+
+.testimonial-grid {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 1.2fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.testimonial-left-panel h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.testimonial-left-panel p {
+  font-size: 13px;
+  color: #d1e7dd;
+}
+
+.testimonial-image-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.testimonial-image-wrapper img {
+  width: 100%;
+  max-width: 260px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.testimonial-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.testimonial-controls button {
+  background-color: #ffb703;
+  border: none;
+  color: #111111;
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.star-rating {
+  color: #ffb703;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.quote-text {
+  font-size: 14px;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.author-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quote-icon {
+  color: #ffb703;
+}
+
+.author-name {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.author-role {
+  display: block;
+  font-size: 12px;
+  color: #ffb703;
+}
+
+/* 10. BANK DONATION BANNER */
+.bank-section-container {
+  max-width: 1140px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.bank-banner {
+  background-color: #ffb703;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.bank-left-panel {
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bank-left-panel h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 12px;
+}
+
+.bank-left-panel p {
+  font-size: 13px;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.bank-right-panel {
+  background-color: #0b6651;
+  color: #ffffff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-row {
+  font-size: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 8px;
+}
+
+.header-row {
+  font-weight: 800;
+  color: #ffb703;
+  font-size: 14px;
+  border-bottom: 2px solid #ffb703;
+}
+
+.code-text {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffb703;
+}
+
+/* Responsive Overrides */
+@media (max-width: 900px) {
+  .hero-section, .about-grid, .stats-grid, .testimonial-grid, .bank-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    flex-direction: column;
+  }
+
+  .project-sidebar {
+    flex-direction: row;
+    padding: 12px;
+  }
+}
