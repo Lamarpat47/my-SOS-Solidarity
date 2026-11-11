@@ -1,93 +1,85 @@
+import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
-import React, { useState } from 'react';
-import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
-import './ActionsYaounde.css';
+export default function Yaounde() {
+  const { language } = useLanguage();
+  const t = translations[language as keyof typeof translations] || translations.en;
 
-const yaoundeImages = [
-  'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=800',
-  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800',
-  'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800'
-];
-
-export const ActionsYaounde: React.FC = () => {
-  const [currentIdx, setCurrentIdx] = useState(0);
+  const actions = [
+    { 
+      id: 1, 
+      title: t.yaoundeAction1Title || 'Soutien aux Communautés de Yaoundé', 
+      desc: t.yaoundeAction1Desc || 'Programmes d’aide humanitaire, d’éducation et d’autonomisation des familles vulnérables dans la capitale.',
+      image: 'https://sos-solidaritepourtous.org/img/yaounde-1.jpg'
+    },
+    { 
+      id: 2, 
+      title: t.yaoundeAction2Title || 'Initiatives de Développement Local', 
+      desc: t.yaoundeAction2Desc || 'Projets d’accompagnement social, d’ateliers de formation et de sensibilisation communautaire.',
+      image: 'https://sos-solidaritepourtous.org/img/yaounde-2.jpg'
+    },
+  ];
 
   return (
-    <div className="yaounde-page">
-      {/* Page Title Header */}
-      <header className="page-header">
-        <h1>Some images of our actions in Yaoundé</h1>
-      </header>
+    <div className="actions-page">
+      <div className="actions-container" style={{ padding: '60px 20px', maxWidth: '1200px', margin: '0 auto' }}>
+        <h1 className="heading-emerald" style={{ fontSize: '36px', color: '#1b5e4b', textAlign: 'center', marginBottom: '10px' }}>
+          {t.yaoundeTitle || 'Nos Actions À Yaoundé'}
+        </h1>
+        <p className="text-subtle" style={{ color: '#666', textAlign: 'center', marginBottom: '40px', fontSize: '16px' }}>
+          {t.yaoundeSubtitle || 'Découvrez nos actions solidaires et projets menés à Yaoundé.'}
+        </p>
 
-      {/* Interactive Gallery Section */}
-      <section className="gallery-section">
-        <div className="gallery-container">
-          <div className="carousel-controls">
-            <button 
-              onClick={() => setCurrentIdx(currentIdx === 0 ? yaoundeImages.length - 1 : currentIdx - 1)}
-              className="carousel-btn"
-              aria-label="Previous image"
+        <div className="actions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+          {actions.map((act) => (
+            <div 
+              key={act.id} 
+              className="action-card"
+              style={{ 
+                background: '#fff', 
+                borderRadius: '8px', 
+                overflow: 'hidden', 
+                boxShadow: '0 4px 15px rgba(0,0,0,0.08)',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
             >
-              <ChevronLeft size={16} />
-            </button>
-            <button 
-              onClick={() => setCurrentIdx(currentIdx === yaoundeImages.length - 1 ? 0 : currentIdx + 1)}
-              className="carousel-btn"
-              aria-label="Next image"
-            >
-              <ChevronRight size={16} />
-            </button>
-          </div>
-
-          <div className="image-frame">
-            <img 
-              src={yaoundeImages[currentIdx]} 
-              alt="Action in Yaoundé" 
-              className="gallery-img"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Video Callout Banner */}
-      <section className="banner-callout">
-        <div className="banner-content">
-          <div className="play-button">
-            <Play size={18} fill="#ffffff" />
-          </div>
-          <p>Together, we can build a world where everyone has the opportunity to thrive.</p>
-        </div>
-        <div className="scroll-indicator">Scroll Down</div>
-      </section>
-
-      {/* Donation Information Section */}
-      <div className="donation-navbar-wrapper">
-        <section className="donation-section">
-          <div className="donation-left">
-            <div className="accent-top-left"></div>
-            <h2>Let's donate to those in need for a better life.</h2>
-            <p>
-              Through your donations, we spread kindness and support to children, families, and communities struggling to find stability.
-            </p>
-            <div className="accent-bottom-right"></div>
-          </div>
-          <div className="donation-right">
-            <div className="card-item header-card">BANK TRANSFER INFORMATION</div>
-            <div className="card-item">BANK: ITALIAN BANK</div>
-            <div className="card-item">IBAN : IT37W3608105138247885447914</div>
-            <div className="card-item">
-              ACCOUNT NAME:<br />
-              <strong>MONKAM WILLIANE ALVINE</strong>
+              <img 
+                src={act.image} 
+                alt={act.title}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = `/img/yaounde-${act.id}.jpg`;
+                }}
+                style={{ width: '100%', height: '220px', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                <h2 className="action-card-title" style={{ fontSize: '20px', color: '#1b5e4b', marginBottom: '12px' }}>
+                  {act.title}
+                </h2>
+                <p className="action-card-desc" style={{ color: '#555', lineHeight: '1.6', marginBottom: '20px', flexGrow: 1 }}>
+                  {act.desc}
+                </p>
+                <button 
+                  className="btn-primary"
+                  style={{ 
+                    backgroundColor: '#1b5e4b', 
+                    color: '#fff', 
+                    border: 'none', 
+                    padding: '10px 18px', 
+                    borderRadius: '4px', 
+                    fontWeight: 'bold', 
+                    cursor: 'pointer',
+                    alignSelf: 'flex-start'
+                  }}
+                >
+                  {t.learnMoreBtn || 'En savoir plus'}
+                </button>
+              </div>
             </div>
-            <div className="card-item reason-card">
-              REASON FOR TRANSFER:<br />
-              <span>Purchase of land for the construction of a community centre</span>
-            </div>
-          </div>
-        </section>
+          ))}
+        </div>
       </div>
     </div>
   );
-};
-
-export default ActionsYaounde;
+}

@@ -1,101 +1,85 @@
 import React from 'react';
-import { 
-  Play, 
-  ChevronLeft, 
-  ChevronRight
-} from 'lucide-react';
-import './ActionsDouala.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
-export const ActionsDouala: React.FC = () => {
+export default function Douala() {
+  const { language } = useLanguage();
+  const t = translations[language as keyof typeof translations] || translations.en;
+
+  const actions = [
+    { 
+      id: 1, 
+      title: t.doualaAction1Title || 'Soutien aux Communautés de Douala', 
+      desc: t.doualaAction1Desc || 'Programmes d’aide humanitaire, d’éducation et d’autonomisation des familles vulnérables dans la métropole.',
+      image: 'https://sos-solidaritepourtous.org/img/douala-1.jpg'
+    },
+    { 
+      id: 2, 
+      title: t.doualaAction2Title || 'Initiatives de Développement Local', 
+      desc: t.doualaAction2Desc || 'Projets d’accompagnement social, d’ateliers de formation et de sensibilisation communautaire.',
+      image: 'https://sos-solidaritepourtous.org/img/douala-2.jpg'
+    },
+  ];
+
   return (
-    <div className="action-douala-wrapper">
-      {/* ==========================================
-          MAIN HEADING SECTION
-      ========================================== */}
-      <section className="title-section">
-        <h1>Some images of our actions in Douala</h1>
-      </section>
-
-      {/* ==========================================
-          GALLERY / CAROUSEL DISPLAY
-      ========================================== */}
-      <section className="gallery-display-section">
-        <div className="carousel-nav-btn left-btn">
-          <ChevronLeft size={20} />
-        </div>
-
-        <div className="image-frame-wrapper">
-          <div className="image-frame">
-            <img 
-              src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800" 
-              alt="Action in Douala" 
-            />
-          </div>
-        </div>
-
-        <div className="carousel-nav-btn right-btn">
-          <ChevronRight size={20} />
-        </div>
-      </section>
-
-      {/* ==========================================
-          AMBER BANNER STRIP
-      ========================================== */}
-      <section className="amber-banner-strip">
-        <div className="play-icon-box">
-          <Play size={18} fill="#ffffff" color="#ffffff" />
-        </div>
-        <p>
-          Together, we can build a world where everyone has the opportunity to thrive.
+    <div className="actions-page">
+      <div className="actions-container" style={{ padding: '60px 20px', maxWidth: '1200px', margin: '0 auto' }}>
+        <h1 className="heading-emerald" style={{ fontSize: '36px', color: '#1b5e4b', textAlign: 'center', marginBottom: '10px' }}>
+          {t.doualaTitle || 'Nos Actions À Douala'}
+        </h1>
+        <p className="text-subtle" style={{ color: '#666', textAlign: 'center', marginBottom: '40px', fontSize: '16px' }}>
+          {t.doualaSubtitle || 'Découvrez nos actions solidaires et projets menés à Douala.'}
         </p>
-        <span className="side-label">Scroll Down</span>
-      </section>
 
-      {/* ==========================================
-          BANK TRANSFER / DONATION BANNER
-      ========================================== */}
-      <section id="donate" className="donation-banner-section">
-        <div className="donation-banner-card">
-          <div className="donation-text-side">
-            <h2>Let's donate to those in need for a better life.</h2>
-            <p>
-              Thanks to your donations, we spread kindness and support to children, families, and communities struggling to find stability.
-            </p>
-          </div>
-
-          <div className="bank-info-side">
-            <div className="info-header">BANK TRANSFER INFORMATION</div>
-            <div className="info-row">
-              <strong>BANK:</strong> ITALIAN BANK
+        <div className="actions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+          {actions.map((act) => (
+            <div 
+              key={act.id} 
+              className="action-card"
+              style={{ 
+                background: '#fff', 
+                borderRadius: '8px', 
+                overflow: 'hidden', 
+                boxShadow: '0 4px 15px rgba(0,0,0,0.08)',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              <img 
+                src={act.image} 
+                alt={act.title}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = `/img/douala-${act.id}.jpg`;
+                }}
+                style={{ width: '100%', height: '220px', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                <h2 className="action-card-title" style={{ fontSize: '20px', color: '#1b5e4b', marginBottom: '12px' }}>
+                  {act.title}
+                </h2>
+                <p className="action-card-desc" style={{ color: '#555', lineHeight: '1.6', marginBottom: '20px', flexGrow: 1 }}>
+                  {act.desc}
+                </p>
+                <button 
+                  className="btn-primary"
+                  style={{ 
+                    backgroundColor: '#1b5e4b', 
+                    color: '#fff', 
+                    border: 'none', 
+                    padding: '10px 18px', 
+                    borderRadius: '4px', 
+                    fontWeight: 'bold', 
+                    cursor: 'pointer',
+                    alignSelf: 'flex-start'
+                  }}
+                >
+                  {t.learnMoreBtn || 'En savoir plus'}
+                </button>
+              </div>
             </div>
-            <div className="info-row iban-highlight">
-              <strong>IBAN :</strong> IT37W3608105138247885447914
-            </div>
-            <div className="info-row">
-              <strong>ACCOUNT NAME:</strong><br />
-              MONKAM WILLIANE ALVINE
-            </div>
-            <div className="info-row">
-              <strong>REASON FOR TRANSFER:</strong><br />
-              Purchase of land for the construction of a community centre
-            </div>
-          </div>
+          ))}
         </div>
-
-        {/* BOTTOM NAVIGATION BAR */}
-        <nav className="bottom-nav">
-          <ul className="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#actions">Our Actions</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#donate" className="btn-donate-link">Make a Donation</a></li>
-          </ul>
-          <button className="btn-italiano">Italiano</button>
-        </nav>
-      </section>
+      </div>
     </div>
   );
-};
-
-export default ActionsDouala;
+}

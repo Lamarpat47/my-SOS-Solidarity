@@ -1,165 +1,93 @@
 import React from 'react';
-import { Phone, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-// Custom Facebook Icon
-const FacebookIcon = ({ size = 20 }: { size?: number }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-  </svg>
-);
-
-// Custom YouTube Icon
-const YoutubeIcon = ({ size = 20 }: { size?: number }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
-    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-  </svg>
-);
-
-// Custom Instagram Icon
-const InstagramIcon = ({ size = 20 }: { size?: number }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-  </svg>
-);
-
-// Custom X (formerly Twitter) Icon
-const XIcon = ({ size = 20 }: { size?: number }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="currentColor"
-  >
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
+import { MapPin, Phone, Mail, ArrowUp } from 'lucide-react';
+import './Footer.css';
 
 export const Footer: React.FC = () => {
-  return (
-    <footer className="site-footer">
-      <div className="footer-columns">
-        {/* Our Office Column */}
-        <div className="footer-col">
-          <h3>Our Office</h3>
-          <p className="flex items-center gap-2">
-            <MapPin size={16} /> Fadac, Tougang Village, Bafoussam, Cm
-          </p>
-          <p className="flex items-center gap-2">
-            <Phone size={16} /> 
-            <a href="tel:+393714421945">+39 371 442 1945</a>
-          </p>
-          <p className="flex items-center gap-2">
-            <Mail size={16} /> 
-            <a href="mailto:oeuvresociale237@gmail.com">oeuvresociale237@gmail.com</a>
-          </p>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-          {/* Social Media Links */}
-          <div className="social-links flex gap-3 mt-4">
-            <a 
-              href="https://facebook.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Facebook"
-              className="social-icon-btn"
-            >
-              <FacebookIcon size={20} />
+  return (
+    <footer className="footer-container">
+      <div className="footer-content">
+        {/* Column 1: Notre bureau */}
+        <div className="footer-col">
+          <h3>Notre bureau</h3>
+          <ul className="footer-contact-list">
+            <li>
+              <span className="footer-icon-pin"><MapPin size={16} /></span>
+              <span>Fadac, Tougang Village, Bafoussam, Cm</span>
+            </li>
+            <li>
+              <span className="footer-icon-pin"><Phone size={16} /></span>
+              <a href="tel:+393714421945">+39 371 442 1945</a>
+            </li>
+            <li>
+              <span className="footer-icon-pin"><Mail size={16} /></span>
+              <a href="mailto:oeuvresociale237@gmail.com">oeuvresociale237@gmail.com</a>
+            </li>
+          </ul>
+          
+          <div className="footer-social-icons">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
-            <a 
-              href="https://x.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="X (Twitter)"
-              className="social-icon-btn"
-            >
-              <XIcon size={20} />
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="social-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             </a>
-            <a 
-              href="https://youtube.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="YouTube"
-              className="social-icon-btn"
-            >
-              <YoutubeIcon size={20} />
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a 
-              href="https://instagram.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Instagram"
-              className="social-icon-btn"
-            >
-              <InstagramIcon size={20} />
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="social-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
           </div>
         </div>
 
-        {/* Quick Links Column */}
+        {/* Column 2: Liens rapides */}
         <div className="footer-col">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact Us</Link></li>
-            <li><Link to="/ActionsBafoussam">Our Actions In Bafoussam</Link></li>
-            <li><Link to="/ActionsDouala">Our Actions In Douala</Link></li>
-            <li><Link to="/ActionsYaounde">Our Actions In Yaoundé</Link></li>
-            <li><Link to="/donate">Donate</Link></li>
+          <h3>Liens rapides</h3>
+          <ul className="footer-links-list">
+            <li><Link to="/">&gt; À Propos De Nous</Link></li>
+            <li><Link to="/contact">&gt; Contactez-Nous</Link></li>
+            <li><Link to="/ActionsBafoussam">&gt; Nos Actions À Bafoussam</Link></li>
+            <li><Link to="/ActionsDouala">&gt; Nos Actions À Douala</Link></li>
+            <li><Link to="/ActionsYaounde">&gt; Nos Actions À Yaoundé</Link></li>
+            <li><Link to="/">&gt; Faire Un Don</Link></li>
           </ul>
         </div>
 
-        {/* Opening Hours Column */}
+        {/* Column 3: Heures d'ouverture */}
         <div className="footer-col">
-          <h3>Opening hours</h3>
-          <p><strong>Monday - Friday</strong><br />9:00 am - 7:00 pm</p>
-          <p><strong>Saturday</strong><br />9:00 am - 12:00 pm</p>
-          <p><strong>Sunday</strong><br />Closed</p>
+          <h3>Heures d'ouverture</h3>
+          <p className="footer-hours-label">Lundi - vendredi</p>
+          <p className="footer-hours-val">9h00 - 19h00</p>
+          <p className="footer-hours-label">Samedi</p>
+          <p className="footer-hours-val">9h00 - 12h00</p>
+          <p className="footer-hours-label">Dimanche</p>
+          <p className="footer-hours-val">Fermé</p>
         </div>
 
-        {/* Gallery Column */}
+        {/* Column 4: Galerie */}
         <div className="footer-col">
-          <h3>Gallery</h3>
-          <div className="footer-thumbs">
-            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=150" alt="Thumb 1" />
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150" alt="Thumb 2" />
-            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=150" alt="Thumb 3" />
+          <h3>Galerie</h3>
+          <div className="footer-gallery-grid">
+            <div className="gallery-thumb"></div>
+            <div className="gallery-thumb"></div>
+            <div className="gallery-thumb"></div>
           </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>© 2026 SOS Solidarity For All. All rights reserved. By <a href="#">Kamyan</a></p>
-        <p>Designed By <a href="#">HTML Codex</a></p>
+        <p>© 2026 SOS Solidarité Pour Tous, Tous droits réservés. By Kamyan</p>
+        <div className="footer-bottom-right">
+          <span>Designed By HTML Code</span>
+          <button onClick={scrollToTop} className="scroll-top-btn" aria-label="Scroll to top">
+            <ArrowUp size={18} />
+          </button>
+        </div>
       </div>
     </footer>
   );

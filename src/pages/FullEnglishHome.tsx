@@ -10,185 +10,221 @@ import {
   ChevronRight,
   Quote
 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+// @ts-ignore
 import './FullEnglishHome.css';
 
 export const FullEnglishHome: React.FC = () => {
+  const { t, lang } = useLanguage();
   const [testimonialIdx, setTestimonialIdx] = useState(0);
 
   const teamMembers = [
     {
       name: 'Françoise DJIATCHEU K.',
-      role: 'President',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400',
+      role: lang === 'en' ? 'President' : lang === 'it' ? 'Presidente' : 'Présidente',
+      image: 'https://sos-solidaritepourtous.org/img/team-1.jpg',
     },
     {
       name: 'Williane A. MONKAM',
-      role: 'Project Coordinator',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400',
+      role: lang === 'en' ? 'Project Coordinator' : lang === 'it' ? 'Coordinatore dei progetti' : 'Coordinatrice des projets',
+      image: 'https://sos-solidaritepourtous.org/img/team-2.jpg',
     },
     {
       name: 'Boris FOTSO',
-      role: 'Littoral Region Delegate',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400',
+      role: lang === 'en' ? 'Littoral Region Delegate' : lang === 'it' ? 'Delegato della regione del Littoral' : 'Délégué de la région du Littoral',
+      image: 'https://sos-solidaritepourtous.org/img/team-3.jpg',
     },
     {
       name: 'Ilario PASTORE',
-      role: 'Head of Training',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400',
+      role: lang === 'en' ? 'Training Manager' : lang === 'it' ? 'Responsabile della formazione' : 'Responsable de la formation',
+      image: 'https://sos-solidaritepourtous.org/img/team-4.jpg',
     },
   ];
 
   const testimonials = [
     {
-      quote:
-        "Life was a constant challenge for my children and me after losing everything. SOS SOLIDARITY FOR ALL not only provided us with a safe shelter and food to survive, but they also helped my children return to school.",
+      quote: lang === 'en' 
+        ? "Life was becoming very difficult for me, especially with my health problems. Thanks to SOS SOLIDARITY FOR ALL, I was able to receive regular visits and they also helped me access medical care."
+        : lang === 'it'
+        ? "La vita stava diventando molto difficile per me, soprattutto con i miei problemi di salute. Grazie a SOS SOLIDARITY FOR ALL, ho potuto ricevere visite regolari e mi hanno anche aiutato ad accedere alle cure mediche."
+        : "La vie devenait très difficile pour moi, surtout avec mes problèmes de santé. Grâce à SOS SOLIDARITÉ POUR TOUS, j'ai pu recevoir des visites régulières et ils m'ont aussi aidé à accéder à des soins médicaux.",
+      author: "Christoph",
+      role: lang === 'en' ? 'Beneficiary' : lang === 'it' ? 'Beneficiario' : 'Bénéficiaire',
+      image: "https://sos-solidaritepourtous.org/img/testimonial-1.jpg",
+    },
+    {
+      quote: lang === 'en'
+        ? "My life changed thanks to SOS SOLIDARITY FOR ALL. Before, my children and I didn't always have enough to eat, and school seemed a distant dream. We received food, clothing, and my children were able to go to school."
+        : lang === 'it'
+        ? "La mia vita è cambiata grazie a SOS SOLIDARITY FOR ALL. Prima, io e i miei figli non avevamo sempre abbastanza da mangiare e la scuola sembrava un sogno lontano. Abbiamo ricevuto cibo, vestiti e i miei figli hanno potuto andare a scuola."
+        : "Ma vie a changé grâce à SOS SOLIDARITÉ POUR TOUS. Avant, mes enfants et moi n'avions pas toujours de quoi manger, et l'école semblait un rêve lointain. Nous avons reçu de la nourriture, des vêtements, et mes enfants ont pu aller à l'école.",
+      author: "Josephine",
+      role: lang === 'en' ? 'Beneficiary' : lang === 'it' ? 'Beneficiario' : 'Bénéficiaire',
+      image: "https://sos-solidaritepourtous.org/img/testimonial-2.jpg",
+    },
+    {
+      quote: lang === 'en'
+        ? "Life was a constant challenge for my children and me after losing everything. SOS SOLIDARITY FOR ALL not only provided us with a safe shelter and food to hold on, but they also helped my children return to school."
+        : lang === 'it'
+        ? "La vita è stata una sfida costante per me e i miei figli dopo aver perso tutto. SOS SOLIDARITY FOR ALL non solo ci ha fornito un rifugio sicuro e cibo per andare avanti, ma ha anche aiutato i miei figli a tornare a scuola."
+        : "La vie était un défi constant pour mes enfants et moi après avoir tout perdu. SOS SOLIDARITÉ POUR TOUS nous a non seulement fourni un abri sûr et de la nourriture pour tenir, mais ils ont aussi aidé mes enfants à retourner à l'école.",
       author: "Elodie",
-      role: "Beneficiary",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600",
+      role: lang === 'en' ? 'Beneficiary' : lang === 'it' ? 'Beneficiario' : 'Bénéficiaire',
+      image: "https://sos-solidaritepourtous.org/img/testimonial-3.jpg",
     },
   ];
 
   return (
-    <div className="home-wrapper">
-      {/* ==========================================
-          HERO BANNER
-      ========================================== */}
+    <div className="home-wrapper page-fade-in">
+      
+      {/* HERO BANNER */}
       <section id="home" className="hero-section">
         <div className="hero-content">
-          <h1>FOR A BETTER FUTURE</h1>
-          <p>
-            We believe in creating opportunities and empowering communities through education, healthcare, and sustainable development.
-          </p>
+          <h1>{t('heroTitle')}</h1>
+          <p>{t('heroDesc')}</p>
           <div className="hero-buttons">
-            <button className="btn-primary-amber">Donate Now</button>
-            <button className="btn-secondary-green">Join Us Now</button>
+            <a href="#donate" className="btn-primary-amber">{t('donateBtn')}</a>
+            <a href="#about" className="btn-secondary-green">{t('joinBtn')}</a>
           </div>
         </div>
         <div className="hero-image-wrap">
           <img
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800"
-            alt="Children in classroom"
+            src="https://sos-solidaritepourtous.org/img/carousel-1.jpg"
+            alt="Enfant en classe"
+            loading="lazy"
           />
         </div>
       </section>
 
-      {/* ==========================================
-          AMBER QUOTE STRIP
-      ========================================== */}
+      {/* AMBER QUOTE STRIP */}
       <div className="quote-strip">
         <div className="play-icon-box">
           <Play size={20} fill="#ffffff" color="#ffffff" />
         </div>
-        <p className="quote-strip-text">
-          Together, we can build a world where everyone has the opportunity to thrive.
-        </p>
-        <span className="vertical-tag">Scroll Down</span>
+        <p className="quote-strip-text">{t('quoteText')}</p>
+        <span className="vertical-tag">{t('scrollDown')}</span>
       </div>
 
-      {/* ==========================================
-          ABOUT US & MISSION SECTION (id="about")
-      ========================================== */}
+      {/* ABOUT US SECTION */}
       <section id="about" className="about-section">
         <div className="about-grid">
           <div className="about-image">
             <img
-              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600"
-              alt="Community gathering"
+              src="https://sos-solidaritepourtous.org/img/about-1.jpg"
+              alt="Rassemblé communautaire"
+              loading="lazy"
             />
           </div>
 
           <div className="about-text">
-            <span className="section-subtitle">— ABOUT US —</span>
-            <h2>Let's join forces, let's change the world</h2>
+            <span className="section-subtitle">
+              {lang === 'en' ? '— ABOUT US —' : lang === 'it' ? '— CHI SIAMO —' : '— A PROPOS DE NOUS —'}
+            </span>
+            <h2>{lang === 'en' ? 'Join our forces, change the world' : lang === 'it' ? 'Uniamo le nostre forze, cambiamo il mondo' : 'Unissons nos forces, changeons le monde'}</h2>
             <p className="description">
-              Every act of kindness brings us closer to a world without suffering. Join a global movement that works for a dignifying future.
+              {lang === 'en'
+                ? "Every act of kindness brings us closer to a world without suffering. Join a global movement working for a future where equality and compassion thrive."
+                : lang === 'it'
+                ? "Ogni atto di gentilezza ci avvicina a un mondo senza sofferenza. Unisciti a un movimento globale che lavora per un futuro in cui uguaglianza e compassione fioriscono."
+                : "Chaque geste de bonté nous rapproche d'un monde sans souffrance. Rejoignez un mouvement mondial qui œuvre pour un avenir où l'égalité et la compassion s'épanouissent."}
             </p>
 
             <div className="mission-content">
-              <h3>Our Mission</h3>
+              <h3>{lang === 'en' ? 'Our Mission' : lang === 'it' ? 'La Nostra Missione' : 'Notre Mission'}</h3>
               <p>
-                Our mission is to support underprivileged communities by providing access to resources, education, and essential tools for their development.
+                {lang === 'en'
+                  ? "Our mission is to help underprivileged communities thrive by providing them with resources, education, and tools for their development."
+                  : lang === 'it'
+                  ? "La nostra missione è aiutare le comunità svantaggiate a prosperare fornendo loro risorse, istruzione e strumenti per il loro sviluppo."
+                  : "Notre mission est d'aider les communautés défavorisées à s'épanouir en leur fournissant des ressources, une éducation et des outils pour leur développement."}
               </p>
               <ul className="checklist">
-                <li><Check size={16} className="check-icon" /> No one should go to bed hungry.</li>
-                <li><Check size={16} className="check-icon" /> We provide compassion and support.</li>
-                <li><Check size={16} className="check-icon" /> Together, we can transform someone's life.</li>
+                <li><Check size={16} className="check-icon" /> {lang === 'en' ? 'No one should go to bed hungry.' : lang === 'it' ? 'Nessuno dovrebbe andare a letto a stomaco vuoto.' : 'Personne ne devrait aller se coucher le ventre vide.'}</li>
+                <li><Check size={16} className="check-icon" /> {lang === 'en' ? 'We spread kindness and support.' : lang === 'it' ? 'Diffondiamo gentilezza e supporto.' : 'Nous répandons la bienveillance et le soutien.'}</li>
+                <li><Check size={16} className="check-icon" /> {lang === 'en' ? "We can change someone's life." : lang === 'it' ? 'Possiamo cambiare la vita di qualcuno.' : "Nous pouvons changer la vie de quelqu'un."}</li>
               </ul>
             </div>
           </div>
 
           <div className="about-amber-card">
             <p>
-              Thanks to your donations, we spread care and support to children and families in need.
+              {lang === 'en'
+                ? 'Thanks to your donations, we spread kindness and support to children and families.'
+                : lang === 'it'
+                ? 'Grazie alle vostre donazioni, diffondiamo gentilezza e supporto a bambini e famiglie.'
+                : 'Grâce à vos dons, nous répandons la bienveillance et le soutien auprès des enfants et des familles.'}
             </p>
-            <button className="btn-dark-green">Donate Now</button>
+            <a href="#donate" className="btn-dark-green">{t('donateBtn')}</a>
           </div>
         </div>
       </section>
 
-      {/* ==========================================
-          STATS & WHY CHOOSE US
-      ========================================== */}
+      {/* STATS SECTION */}
       <section className="stats-section">
         <div className="stats-grid">
           <div className="stats-boxes">
             <div className="stat-box box-amber">
               <Users size={28} />
               <span className="stat-number">50</span>
-              <span className="stat-label">Active Beneficiaries</span>
+              <span className="stat-label">{lang === 'en' ? 'Active Volunteers' : lang === 'it' ? 'Volontari attivi' : 'Bénévoles actifs'}</span>
             </div>
             <div className="stat-box box-green">
               <Utensils size={28} />
               <span className="stat-number">1000</span>
-              <span className="stat-label">Meals Served</span>
+              <span className="stat-label">{lang === 'en' ? 'Meals Served' : lang === 'it' ? 'Pasti serviti' : 'Repas servis'}</span>
             </div>
             <div className="stat-box box-green">
               <FolderCheck size={28} />
               <span className="stat-number">30</span>
-              <span className="stat-label">Projects</span>
+              <span className="stat-label">{lang === 'en' ? 'Projects' : lang === 'it' ? 'Progetti' : 'Projets'}</span>
             </div>
             <div className="stat-box box-amber">
               <HeartHandshake size={28} />
               <span className="stat-number">1000</span>
-              <span className="stat-label">People Assisted</span>
+              <span className="stat-label">{lang === 'en' ? 'People Helped' : lang === 'it' ? 'Persone aiutate' : 'Personnes aidées'}</span>
             </div>
           </div>
 
           <div className="stats-info">
-            <span className="section-subtitle">— WHY JOIN US —</span>
-            <h2>A few reasons why people choose us!</h2>
+            <span className="section-subtitle">
+              {lang === 'en' ? '— WHY US —' : lang === 'it' ? '— PERCHÉ SCEGLIERCI —' : '— POURQUOI NOUS —'}
+            </span>
+            <h2>{lang === 'en' ? 'A few reasons why people choose us!' : lang === 'it' ? 'Alcuni motivi per cui le persone ci scelgono!' : 'Quelques raisons pour lesquelles les gens nous choisissent !'}</h2>
             <p>
-              We believe in creating opportunities and empowering communities through education, health services, and sustainable development. Your actions bring comfort, hope, and a better future.
+              {lang === 'en'
+                ? 'We believe in creating opportunities and empowering communities through education, healthcare, and sustainable development. Your support helps us bring smiles, hope, and a better future to those in need.'
+                : lang === 'it'
+                ? 'Crediamo nella creazione di opportunità e nell’empowerment delle comunità attraverso l’istruzione, l’assistenza sanitaria e lo sviluppo sostenibile. Il tuo supporto ci aiuta a portare sorrisi, speranza e un futuro migliore a chi ne ha bisogno.'
+                : "Nous croyons en la création d'opportunités et l'autonomisation des communautés par l'éducation, les soins de santé et le développement durable. Votre soutien nous aide à apporter sourires, espoir et un avenir meilleur à ceux qui en ont besoin."}
             </p>
             <ul className="checklist">
-              <li><Check size={16} className="check-icon" /> Support for underprivileged children</li>
-              <li><Check size={16} className="check-icon" /> Assistance for isolated elderly people</li>
-              <li><Check size={16} className="check-icon" /> Defense of fundamental human rights</li>
+              <li><Check size={16} className="check-icon" /> {lang === 'en' ? 'Support for disadvantaged children.' : lang === 'it' ? 'Supporto ai bambini svantaggiati.' : 'Soutien aux enfants défavorisés.'}</li>
+              <li><Check size={16} className="check-icon" /> {lang === 'en' ? 'Help for isolated elderly people.' : lang === 'it' ? 'Aiuto agli anziani isolati.' : 'Aide aux personnes âgées isolées.'}</li>
+              <li><Check size={16} className="check-icon" /> {lang === 'en' ? 'Defense of fundamental rights.' : lang === 'it' ? 'Difesa dei diritti fondamentali.' : 'Défense des droits fondamentaux.'}</li>
             </ul>
 
             <div className="stats-buttons">
-              <button className="btn-primary-amber">Donate Now</button>
-              <button className="btn-secondary-green">Join Us Now</button>
+              <a href="#donate" className="btn-primary-amber">{t('donateBtn')}</a>
+              <a href="#about" className="btn-secondary-green">{t('joinBtn')}</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ==========================================
-          TEAM MEMBERS SECTION
-      ========================================== */}
+      {/* TEAM SECTION */}
       <section className="team-section">
         <div className="section-header-centered">
-          <span className="section-subtitle">— OUR TEAM —</span>
-          <h2>Meet the dedicated members of our team</h2>
+          <span className="section-subtitle">
+            {lang === 'en' ? '— OUR TEAM —' : lang === 'it' ? '— IL NOSTRO TEAM —' : '— NOTRE EQUIPE —'}
+          </span>
+          <h2>{lang === 'en' ? 'Meet the dedicated members of our team' : lang === 'it' ? 'Incontra i membri dedicati del nostro team' : 'Faites la connaissance des membres dévoués de notre équipe'}</h2>
         </div>
 
         <div className="team-grid">
           {teamMembers.map((member, index) => (
-            <div key={index} className="team-card">
+            <div key={index} className="team-card hover-zoom">
               <div className="team-image">
-                <img src={member.image} alt={member.name} />
+                <img src={member.image} alt={member.name} loading="lazy" />
               </div>
               <div className="team-info">
                 <h3>{member.name}</h3>
@@ -199,93 +235,112 @@ export const FullEnglishHome: React.FC = () => {
         </div>
       </section>
 
-      {/* ==========================================
-          OUR DONATION CAUSES ACROSS CAMEROON
-      ========================================== */}
+      {/* CAUSES SECTION */}
       <section className="causes-section section-container">
         <div className="section-header-centered">
-          <span className="section-subtitle">— OUR CAUSES —</span>
+          <span className="section-subtitle">
+            {lang === 'en' ? '— DONATION —' : lang === 'it' ? '— DONAZIONE —' : '— DONATION —'}
+          </span>
           <h2 className="section-title">
-            Our Donation Causes Across Cameroon
+            {lang === 'en' ? 'Our donation causes across Cameroon' : lang === 'it' ? 'Le nostre cause di donazione in tutto il Camerun' : 'Nos causes de dons à travers le Cameroun'}
           </h2>
         </div>
 
         <div className="cards-grid">
-          <div className="cause-card">
+          <div className="cause-card hover-lift">
             <div className="card-image-wrap">
               <img
-                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600"
-                alt="Provide Basic Needs"
+                src="https://sos-solidaritepourtous.org/img/causes-1.jpg"
+                alt="Fournir des besoins de base"
+                loading="lazy"
               />
-              <span className="cause-tag">CAMEROON</span>
+              <span className="cause-tag">{lang === 'en' ? 'ESSENTIALS' : lang === 'it' ? 'ESSENZIALI' : 'ESSENTIELS'}</span>
             </div>
             <div className="card-body">
-              <h3>Provide Basic Needs</h3>
+              <h3>{lang === 'en' ? 'Providing basic needs' : lang === 'it' ? 'Fornire bisogni di base' : 'Fournir des besoins de base'}</h3>
               <p>
-                Ensuring that elderly and vulnerable individuals have access to essential needs such as food, water, clothing, and shelter.
+                {lang === 'en'
+                  ? 'Ensuring that the elderly and destitute children have access to essential needs such as food, water, clothing, and shelter.'
+                  : lang === 'it'
+                  ? 'Garantire che gli anziani e i bambini bisognosi abbiano accesso a beni essenziali come cibo, acqua, vestiti e un alloggio.'
+                  : "Assurer que les personnes âgées et les enfants démunis aient accès à des besoins essentiels tels que la nourriture, l'eau, les vêtements et un abri."}
               </p>
             </div>
             <div className="card-footer">
-              <button className="btn-amber">+ Donate Now</button>
+              <a href="#donate" className="btn-amber">{t('donateBtn')}</a>
             </div>
           </div>
 
-          <div className="cause-card">
+          <div className="cause-card hover-lift">
             <div className="card-image-wrap">
               <img
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600"
-                alt="Support Healthcare"
+                src="https://sos-solidaritepourtous.org/img/causes-2.jpg"
+                alt="Soutenir la santé"
+                loading="lazy"
               />
-              <span className="cause-tag">HEALTH</span>
+              <span className="cause-tag">{lang === 'en' ? 'HEALTH' : lang === 'it' ? 'SALUTE' : 'SANTE'}</span>
             </div>
             <div className="card-body">
-              <h3>Support Healthcare</h3>
+              <h3>{lang === 'en' ? 'Supporting health' : lang === 'it' ? 'Sostenere la salute' : 'Soutenir la santé'}</h3>
               <p>
-                Organizing health awareness campaigns, providing basic medical care, and delivering mental health support to elderly individuals and children in need.
+                {lang === 'en'
+                  ? 'Organizing health awareness campaigns, offering basic medical care and mental health services for the elderly and children in need.'
+                  : lang === 'it'
+                  ? 'Organizzare campagne di sensibilizzazione sulla salute, offrire cure mediche di base e servizi di salute mentale per anziani e bambini bisognosi.'
+                  : "Organiser des campagnes de sensibilisation à la santé, offrir des soins médicaux de base et des services de santé mentale pour les personnes âgées et les enfants dans le besoin."}
               </p>
             </div>
             <div className="card-footer">
-              <button className="btn-amber">+ Donate Now</button>
+              <a href="#donate" className="btn-amber">{t('donateBtn')}</a>
             </div>
           </div>
 
-          <div className="cause-card">
+          <div className="cause-card hover-lift">
             <div className="card-image-wrap">
               <img
-                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=600"
-                alt="Offer Educational Support"
+                src="https://sos-solidaritepourtous.org/img/causes-3.jpg"
+                alt="Offrir un soutien éducatif"
+                loading="lazy"
               />
-              <span className="cause-tag">EDUCATION</span>
+              <span className="cause-tag">{lang === 'en' ? 'EDUCATION' : lang === 'it' ? 'EDUCAZIONE' : 'EDUCATION'}</span>
             </div>
             <div className="card-body">
-              <h3>Offer Educational Support</h3>
+              <h3>{lang === 'en' ? 'Providing educational support' : lang === 'it' ? 'Offrire supporto educativo' : 'Offrir un soutien éducatif'}</h3>
               <p>
-                Establishing educational programs for underprivileged children, including access to formal schooling and vocational training courses.
+                {lang === 'en'
+                  ? 'Setting up educational programs for underprivileged children, including access to formal education and vocational training courses.'
+                  : lang === 'it'
+                  ? 'Creare programmi educativi per bambini svantaggiati, compreso l’accesso all’istruzione formale e corsi di formazione professionale.'
+                  : "Mettre en place des programmes éducatifs pour les enfants démunis, y compris l'accès à l'éducation formelle et à des cours de formations professionnelles."}
               </p>
             </div>
             <div className="card-footer">
-              <button className="btn-amber">+ Donate Now</button>
+              <a href="#donate" className="btn-amber">{t('donateBtn')}</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ==========================================
-          TESTIMONIALS SECTION
-      ========================================== */}
+      {/* TESTIMONIALS SECTION */}
       <section className="testimonial-section">
         <div className="testimonial-grid">
           <div className="testimonial-left-panel">
-            <h2>What people say about our activities.</h2>
+            <h2>{lang === 'en' ? 'What people say about our activities.' : lang === 'it' ? 'Cosa dicono le persone delle nostre attività.' : 'Ce que les gens disent de nos activités.'}</h2>
             <p>
-              We work to bring smiles, hope, and a better future to those who need it most.
+              {lang === 'en'
+                ? 'We work to bring smiles, hope, and a better future to those in need.'
+                : lang === 'it'
+                ? 'Lavoriamo per portare sorrisi, speranza e un futuro migliore a chi ne ha bisogno.'
+                : "Nous œuvrons pour apporter des sourires, de l'espoir et un avenir meilleur à ceux qui en ont besoin."}
             </p>
           </div>
 
           <div className="testimonial-image-wrapper">
             <img
               src={testimonials[testimonialIdx].image}
-              alt="Beneficiary"
+              alt="Bénéficiaire"
+              className="fade-transition"
+              loading="lazy"
             />
             <div className="testimonial-controls">
               <button
@@ -335,126 +390,161 @@ export const FullEnglishHome: React.FC = () => {
         </div>
       </section>
 
-      {/* ==========================================
-          OUR DIFFERENT PROJECTS
-      ========================================== */}
+      {/* PROJECTS SECTION */}
       <section className="section-container">
         <div className="section-header-centered">
-          <span className="section-subtitle">— OUR PROJECTS —</span>
+          <span className="section-subtitle">
+            {lang === 'en' ? '— OUR PROJECTS —' : lang === 'it' ? '— I NOSTRI PROGETTI —' : '— NOS PROJETS —'}
+          </span>
           <h2 className="section-title">
-            Our Different Projects Across Cameroon
+            {lang === 'en' ? 'Our various projects across Cameroon' : lang === 'it' ? 'I nostri vari progetti in tutto il Camerun' : 'Nos différents Projets à travers le Cameroun'}
           </h2>
         </div>
 
         <div className="cards-grid">
-          <div className="project-card">
+          <div className="project-card hover-lift">
             <div className="project-sidebar">
-              <div className="raised-tag">Raised $2000</div>
+              <div className="raised-tag">{lang === 'en' ? 'Raised £2000' : lang === 'it' ? 'Raccolti £2000' : 'Levé £2000'}</div>
               <div className="percent-box">20%</div>
-              <div className="goal-tag">Goal $10000</div>
+              <div className="goal-tag">{lang === 'en' ? 'Goal £10000' : lang === 'it' ? 'Obiettivo £10000' : 'Objectif £10000'}</div>
             </div>
 
             <div className="project-content">
               <div className="card-image-wrap">
                 <img
-                  src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600"
-                  alt="Land Purchase"
+                  src="https://sos-solidaritepourtous.org/img/causes-1.jpg"
+                  alt="Achat d'un terrain"
+                  loading="lazy"
                 />
-                <span className="cause-tag">HEADQUARTERS</span>
+                <span className="cause-tag">{lang === 'en' ? 'HEADQUARTERS' : lang === 'it' ? 'SEDE' : 'SIEGE'}</span>
               </div>
               <div className="card-body">
-                <h3>Land Purchase</h3>
+                <h3>{lang === 'en' ? 'Purchase of land' : lang === 'it' ? 'Acquisto di un terreno' : "Achat d'un terrain"}</h3>
                 <p>
-                  Purchase of a site for the construction of the organization's headquarters.
+                  {lang === 'en'
+                    ? 'Purchase of a site for the construction of the association headquarters.'
+                    : lang === 'it'
+                    ? 'Acquisto di un’area per la costruzione della sede dell’associazione.'
+                    : "Achat d'un site pour la construction du siège de l'association."}
                 </p>
               </div>
               <div className="card-footer">
-                <button className="btn-amber">+ Donate Now</button>
+                <a href="#donate" className="btn-amber">{t('donateBtn')}</a>
               </div>
             </div>
           </div>
 
-          <div className="project-card">
+          <div className="project-card hover-lift">
             <div className="project-sidebar">
-              <div className="raised-tag">Raised $2500</div>
+              <div className="raised-tag">{lang === 'en' ? 'Raised £2500' : lang === 'it' ? 'Raccolti £2500' : 'Levé £2500'}</div>
               <div className="percent-box">25%</div>
-              <div className="goal-tag">Goal $10000</div>
+              <div className="goal-tag">{lang === 'en' ? 'Goal £10000' : lang === 'it' ? 'Obiettivo £10000' : 'Objectif £10000'}</div>
             </div>
 
             <div className="project-content">
               <div className="card-image-wrap">
                 <img
-                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600"
-                  alt="Multiple Training Centers"
+                  src="https://sos-solidaritepourtous.org/img/causes-2.jpg"
+                  alt="Plusieurs centres de formation"
+                  loading="lazy"
                 />
-                <span className="cause-tag">TRAINING</span>
+                <span className="cause-tag">{lang === 'en' ? 'TRAINING' : lang === 'it' ? 'FORMAZIONE' : 'FORMATION'}</span>
               </div>
               <div className="card-body">
-                <h3>Multiple Training Centers</h3>
+                <h3>{lang === 'en' ? 'Multiple training centers' : lang === 'it' ? 'Centri di formazione multipli' : 'Plusieurs centres de formation'}</h3>
                 <p>
-                  A computer training center, an apprenticeship center for youth empowerment, and adaptation to new technologies.
+                  {lang === 'en'
+                    ? 'An ambulance driver training center, and a training center for the integration of youth and adults into new technology professions.'
+                    : lang === 'it'
+                    ? 'Un centro di formazione per autisti di ambulanza e un centro di formazione per l’inserimento di giovani e adulti nelle professioni delle nuove tecnologie.'
+                    : "Un centre de formation d'ambulanciers, un centre de formation pour l'insertion des jeunes et adultes aux métiers aux nouvelles technologies."}
                 </p>
               </div>
               <div className="card-footer">
-                <button className="btn-amber">+ Donate Now</button>
+                <a href="#donate" className="btn-amber">{t('donateBtn')}</a>
               </div>
             </div>
           </div>
 
-          <div className="project-card">
+          <div className="project-card hover-lift">
             <div className="project-sidebar">
-              <div className="raised-tag">Raised $2000</div>
+              <div className="raised-tag">{lang === 'en' ? 'Raised £2000' : lang === 'it' ? 'Raccolti £2000' : 'Levé £2000'}</div>
               <div className="percent-box">20%</div>
-              <div className="goal-tag">Goal $10000</div>
+              <div className="goal-tag">{lang === 'en' ? 'Goal £10000' : lang === 'it' ? 'Obiettivo £10000' : 'Objectif £10000'}</div>
             </div>
 
             <div className="project-content">
               <div className="card-image-wrap">
                 <img
-                  src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=600"
-                  alt="Cultural Center"
+                  src="https://sos-solidaritepourtous.org/img/causes-3.jpg"
+                  alt="Un centre culturel"
+                  loading="lazy"
                 />
-                <span className="cause-tag">CULTURE</span>
+                <span className="cause-tag">{lang === 'en' ? 'CULTURE' : lang === 'it' ? 'CULTURA' : 'CULTURE'}</span>
               </div>
               <div className="card-body">
-                <h3>A Cultural Center</h3>
+                <h3>{lang === 'en' ? 'A cultural center' : lang === 'it' ? 'Un centro culturale' : 'Un centre culturel'}</h3>
                 <p>
-                  A cultural center for exchange, culture, and traditions between elderly individuals and youth.
+                  {lang === 'en'
+                    ? 'A cultural center for the exchange of culture and traditions between the elderly and youth.'
+                    : lang === 'it'
+                    ? 'Un centro culturale per lo scambio di cultura e tradizioni tra anziani e giovani.'
+                    : "Un centre culturel pour un échange de culture et traditions entre personnes âgées et jeunes."}
                 </p>
               </div>
               <div className="card-footer">
-                <button className="btn-amber">+ Donate Now</button>
+                <a href="#donate" className="btn-amber">{t('donateBtn')}</a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ==========================================
-          BANK DONATION BANNER (id="donate")
-      ========================================== */}
+      {/* BANK DONATION SECTION */}
       <section id="donate" className="bank-section-container">
         <div className="bank-banner">
           <div className="bank-left-panel">
             <div className="top-corner-accent"></div>
-            <h2>Let's donate to those in need for a better life.</h2>
+            <h2>
+              {lang === 'en' 
+                ? 'Let us donate to people in need for a better life.' 
+                : lang === 'it' 
+                ? 'Facciamo una donazione alle persone bisognose per una vita migliore.' 
+                : 'Faisons un don aux personnes dans le besoin pour une vie meilleure.'}
+            </h2>
             <p>
-              Through your donations, we spread kindness and support to children, families, and communities struggling to find stability.
+              {lang === 'en'
+                ? 'Thanks to your donations, we spread kindness and support to children, families, and communities struggling to find stability.'
+                : lang === 'it'
+                ? 'Grazie alle vostre donazioni, diffondiamo gentilezza e supporto a bambini, famiglie e comunità che lottano per trovare stabilità.'
+                : "Grâce à vos dons, nous répandons la bienveillance et le soutien aux enfants, aux familles et aux communautés qui luttent pour trouver la stabilité."}
             </p>
             <div className="bottom-corner-accent"></div>
           </div>
 
           <div className="bank-right-panel">
-            <div className="info-row header-row">BANK TRANSFER INFORMATION</div>
-            <div className="info-row">BANK: ITALIAN BANK</div>
+            <div className="info-row header-row">
+              {lang === 'en' ? 'BANK TRANSFER INFORMATION' : lang === 'it' ? 'INFORMAZIONI PER IL BONIFICO BANCARIO' : 'INFORMATIONS POUR LE TRANSFERT BANCAIRE'}
+            </div>
+            <div className="info-row">
+              {lang === 'en' ? 'BANK: ITALIAN BANK' : lang === 'it' ? 'BANCA: BANCA ITALIANA' : 'BANQUE : BANQUE ITALIENNE'}
+            </div>
             <div className="info-row code-text">IBAN : IT37W3608105138247885447914</div>
             <div className="info-row">
-              ACCOUNT NAME:<br />
+              {lang === 'en' ? 'ACCOUNT NAME:' : lang === 'it' ? 'NOME CONTO:' : 'NOM DU COMPTE :'}
+              <br />
               <strong>MONKAM WILLIANE ALVINE</strong>
             </div>
             <div className="info-row">
-              REASON FOR TRANSFER:<br />
-              <span>Purchase of land for the construction of a community centre</span>
+              {lang === 'en' ? 'TRANSFER REASON:' : lang === 'it' ? 'CAUSALE DEL TRASFERIMENTO:' : 'MOTIF DU TRANSFERT :'}
+              <br />
+              <span>
+                {lang === 'en'
+                  ? 'Purchase of land for the construction of a community center'
+                  : lang === 'it'
+                  ? 'Acquisto di un terreno per la costruzione di un centro comunitario'
+                  : "Achat d'un terrain pour la construction d'un centre communautaire"}
+              </span>
             </div>
           </div>
         </div>
