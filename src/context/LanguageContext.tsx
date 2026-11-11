@@ -4,6 +4,7 @@ type Language = 'fr' | 'en' | 'it';
 
 interface LanguageContextType {
   lang: Language;
+  language: Language; // Added to satisfy destructuring in page components
   setLang: (lang: Language) => void;
   t: (key: string) => string;
 }
@@ -129,7 +130,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang, language: lang, setLang, t }}>
       {children}
     </LanguageContext.Provider>
   );
